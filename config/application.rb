@@ -27,5 +27,6 @@ module AlHashimFoundation
 
     config.assets.precompile << %r(.*.(?:eot|svg|ttf|woff|woff2)$)
     
+    config.angular_templates.inside_paths   = ['app/assets']
   end
 end
