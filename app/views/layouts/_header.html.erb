@@ -1,4 +1,4 @@
-<header>
+<header ng-controller="NavigationController">
 	<div class="clear"></div>
 	<div class="container_12">
 		<div class="grid_12">
@@ -8,21 +8,19 @@
 			<div class="menu_block">
 				<nav class="horizontal-nav full-width horizontalNav-notprocessed">
 					<ul class="sf-menu">
-						<li class="current"><%= link_to "Home", "#/" %>
+						<li ng-repeat="menu in menuList" ng-class="{'current': menu.title == selectedMenu}" ng-click="selectMenu(menu.title)">
+							<a href="{{menu.url}}">{{menu.title}}</a>
 							<ul>
-								<li><a href="#">history</a></li>
-								<li><a href="#">offers</a></li>
-								<li><a href="#">news</a>
-								<ul>
-									<li><a href="#">fresh </a></li>
-									<li><a href="#">archive</a></li>
-								</ul>
+								<li ng-repeat="home in menu.homeSubMenue">
+									<%= link_to "{{home.title}}", "{{home.url}}"%>
+									<ul>
+										<li ng-repeat="news in home.newsSubMenue">
+											<%= link_to "{{news.title}}", "{{news.url}}" %>
+										</li>
+									</ul>
+								</li>
 							</ul>
 						</li>
-						<li><%= link_to "Videos", "#videos" %></li>
-						<li><%= link_to "Campaigns", "#campaigns" %></li>
-						<li><%= link_to "Volunteer", "#volunteer" %></li>
-						<li><%= link_to "Contacts", "#contacts" %></li>
 					</ul>
 				</nav>
 				<div class="clear"></div>
