@@ -11,3 +11,8 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore public
+public/system/**/*
+public/images
+public/uploads/*
