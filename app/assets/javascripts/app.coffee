@@ -2,6 +2,7 @@ app = angular.module('alHashimFound',[
   'templates',
   'ngRoute',
   'controllers',
+  'Devise'
 ])
 
 
@@ -28,5 +29,8 @@ app.config([ '$routeProvider',
         templateUrl: 'contacts.html'
         controller: 'ContactCtrl'
       )
-
+      .when('/login',
+        templateUrl: 'login.html'
+        controller: 'LoginCtr'
+      )
 ])

@@ -63,3 +63,7 @@ controllers.controller("VolunteerCtrl", [ '$scope', '$routeParams', '$location',
 controllers.controller("ContactCtrl", [ '$scope', '$routeParams', '$location',
   ($scope,$routeParams,$location)->
 ])
+
+controllers.controller("LoginCtr", [ '$scope', '$routeParams', '$location',
+  ($scope,$routeParams,$location)->
+])
