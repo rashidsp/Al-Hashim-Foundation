@@ -1017,3 +1017,6 @@ header h1 {
 }
 
 }
+.sf-menu.sf-js-enabled.sf-arrows li a {
+    text-decoration: none;
+}
