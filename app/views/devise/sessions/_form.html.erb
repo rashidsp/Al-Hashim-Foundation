@@ -1,0 +1,45 @@
+<%= form_for(resource, as: resource_name, 
+  url: session_path(resource_name),
+  html: {class: "omb_loginForm", name: "userForm"},
+  remote: true
+  ) do |f| %>
+
+  <div class="input-group" ng-class="{ 'has-error' : (userForm['user[email]'].$invalid && !userForm['user[email]'].$pristine) || email_error.length > 0}" ng-controller="LoginCtr as email">
+    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+    
+    <%= f.email_field :email, autofocus: true, required: true, placeholder: "email address", "ng-model" => "user.email", class: "form-control", "ng-blur"=>"email.validateEmail($event)" %>
+  </div>
+
+  <!-- <p ng-show="userForm['user[email]'].$touched && userForm['user[email]'].$invalid && !userForm['user[email]'].$error.required" class="help-block">Enter a valid email!</p>
+  <p ng-show="userForm['user[email]'].$touched && userForm['user[email]'].$error.required" class="help-block">Email can't be blank!</p> -->
+
+  <!-- <p class="help-block">{{email_error}}</p> -->
+
+  <p id="email_error" class="help-block" ></p>
+
+
+  <span class="help-block"></span>
+            
+  <div class="input-group" ng-class="{ 'has-error' : userForm['user[password]'].$touched && userForm['user[password]'].$error.required}">
+    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+    <%= f.password_field :password, autofocus: false, required: true, placeholder: "Password", "ng-model" => "user.password", class: "form-control"%>
+  </div>
+  <span class="help-block"></span>
+  <p ng-show="userForm['user[password]'].$touched && userForm['user[password]'].$error.required" class="help-block">Password can't be blank!.</p>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="col-xs-12 col-sm-6">
+      <label class="checkbox">
+        <%= f.check_box :remember_me %>Remember Me
+      </label>
+    </div>
+  <%end%>
+
+  <div class="col-xs-12 col-sm-6">
+    <p class="omb_forgotPwd">
+      <a href="#">Forgot password?</a>
+    </p>
+  </div>
+
+  <button ng-disabled="userForm.$invalid" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+<% end %>

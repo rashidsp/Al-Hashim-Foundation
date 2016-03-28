@@ -16,5 +16,5 @@
 //= require angular-route/angular-route
 //= require angular-rails-templates
 //= require angular-devise
-//= require jquery_ujs
+//= require ngprogress
 //= require_tree .

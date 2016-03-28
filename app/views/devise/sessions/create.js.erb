@@ -1,0 +1,6 @@
+<% if @error %>
+	$('#email_error').html('<%= @error %>');
+<% else %>
+    window.location.href = '<%= root_path %>';
+<% end %>
+
