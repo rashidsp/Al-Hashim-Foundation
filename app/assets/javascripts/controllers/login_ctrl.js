@@ -2,24 +2,33 @@ angular
     .module('alHashimFound')
     .controller('LoginCtr', LoginCtr);
 
-function LoginCtr(loginValidationFactory) {
+function LoginCtr(loginValidationFactory, $http) {
     var vm = this;
     vm.name = {};
-    vm.validateEmail = function(e) {
-      email_obj = e.target;
-      emailIsValid = loginValidationFactory.chechEmailValidity(email_obj.value);
-      // if loginValidationFactory.emailIsValid("rashidsp"){
-      //   $("#email_error").html("");
-      // }else{
-      //   error = loginValidationFactory.showErroMessages;
-      //   $("#email_error").html(error);
-      // }
+
+    vm.validateEmail = function(email_address) {
+      email_obj = email_address;
+      emailIsValid = loginValidationFactory.chechEmailValidity(email_obj);
       if (emailIsValid){
-        $("#email_error").html(email_obj.value);
-      }
-      else{
+        $http({
+          method: 'GET',
+          url: '/validation_email.json',
+          params: {
+            email: email_obj
+          }
+        }).success(function(data) {
+          if (data.success){
+            $("#email_error").html("");  
+          }else{
+            $("#email_error").html("User of this email does not exists!"); 
+          }
+        }).error(function(data) {
+          $("#email_error").html("Error occurre while email validation");
+        });
+      }else{
         $("#email_error").html(loginValidationFactory.getErrorMessage());
       }
+
     };
 }
 

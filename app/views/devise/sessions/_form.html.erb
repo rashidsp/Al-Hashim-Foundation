@@ -4,10 +4,14 @@
   remote: true
   ) do |f| %>
 
+  <div ng-controller="LoginCtr as login">
+    {{ login.error_message }}
+  </div>
+
   <div class="input-group" ng-class="{ 'has-error' : (userForm['user[email]'].$invalid && !userForm['user[email]'].$pristine) || email_error.length > 0}" ng-controller="LoginCtr as email">
     <span class="input-group-addon"><i class="fa fa-user"></i></span>
     
-    <%= f.email_field :email, autofocus: true, required: true, placeholder: "email address", "ng-model" => "user.email", class: "form-control", "ng-blur"=>"email.validateEmail($event)" %>
+    <%= f.email_field :email, autofocus: true, required: true, placeholder: "email address", "ng-model" => "user.email", class: "form-control", "ng-blur"=>"email.validateEmail(user.email)" %>
   </div>
 
   <!-- <p ng-show="userForm['user[email]'].$touched && userForm['user[email]'].$invalid && !userForm['user[email]'].$error.required" class="help-block">Enter a valid email!</p>
