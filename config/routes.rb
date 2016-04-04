@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+  get 'users/validation_email'
+
+    devise_for :users, :controllers => {sessions: 'sessions'}
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root 'home#index'
   resources :home
+
+  get 'validation_email' => 'users#validation_email', as: :validation_email
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

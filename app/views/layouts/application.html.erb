@@ -7,10 +7,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="alHashimFound">
-<%= render 'layouts/header' %>
-<div class="main">
-	<%= yield %>
-</div>
-<%= render 'layouts/footer' %>	
+	<%= render 'layouts/header' %>
+	<%= render 'layouts/messages' %>
+	<div class="main">
+		<%= yield %>
+	</div>
+	<%= render 'layouts/footer' %>	
 </body>
 </html>

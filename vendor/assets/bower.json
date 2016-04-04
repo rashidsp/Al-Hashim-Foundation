@@ -4,6 +4,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "bootstrap-sass-official": "latest",
-    "angular-devise": "latest"
+    "angular-devise": "latest",
+    "ngprogress": "latest"
   }
 }
