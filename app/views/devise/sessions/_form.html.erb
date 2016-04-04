@@ -14,11 +14,6 @@
     <%= f.email_field :email, autofocus: true, required: true, placeholder: "email address", "ng-model" => "user.email", class: "form-control", "ng-blur"=>"email.validateEmail(user.email)" %>
   </div>
 
-  <!-- <p ng-show="userForm['user[email]'].$touched && userForm['user[email]'].$invalid && !userForm['user[email]'].$error.required" class="help-block">Enter a valid email!</p>
-  <p ng-show="userForm['user[email]'].$touched && userForm['user[email]'].$error.required" class="help-block">Email can't be blank!</p> -->
-
-  <!-- <p class="help-block">{{email_error}}</p> -->
-
   <p id="email_error" class="help-block" ></p>
 
 

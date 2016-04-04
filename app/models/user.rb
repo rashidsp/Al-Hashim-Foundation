@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   mount_uploader :attachment, ImageUploader
 
+  validates :email, :password, presence: true
+  
+  validates :email, uniqueness: {case_insensitive: true, allow_blank: true}
 
   def name
   	first_name + " " + last_name
